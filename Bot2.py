@@ -17,5 +17,8 @@ async def creator(ctx):
 @client.command()
 async def say(ctx,*,arg):
     await ctx.send(arg)
+@client.command()
+async def yo(ctx):
+    await ctx.send("yo fellas")
 
 client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.xs8zT_3NyJ9C7Xy67hQPKzzNQfQ")
