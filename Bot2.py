@@ -20,5 +20,7 @@ async def say(ctx,*,arg):
 @client.command()
 async def yo(ctx):
     await ctx.send("yo fellas")
-
+@client.command()
+async def cya(ctx):
+    await ctx.send("Bye!")
 client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.xs8zT_3NyJ9C7Xy67hQPKzzNQfQ")
