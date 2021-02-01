@@ -24,5 +24,13 @@ async def yo(ctx):
 @client.command()
 async def cya(ctx):
     await ctx.send("Bye!")
+@client.command()
+x = random.randint(0,1)
+if (x == 0):
+    x = "Tails"
+elif (x==1):
+    x = "heads"
+async def toss(ctx):
+    await ctx.send("I tossed a coin and it landed on",x)
 
 client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.xs8zT_3NyJ9C7Xy67hQPKzzNQfQ")
