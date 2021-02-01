@@ -23,4 +23,11 @@ async def yo(ctx):
 @client.command()
 async def cya(ctx):
     await ctx.send("Bye!")
+def to_upper(argument):
+    return argument.upper()
+
+@client.command()
+async def bold(ctx, *, content: to_upper):
+    await ctx.send(content)
+
 client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.xs8zT_3NyJ9C7Xy67hQPKzzNQfQ")
