@@ -8,27 +8,26 @@ async def on_ready():
 @client.command()
 async def hello(ctx):
     await ctx.send("Hey there! , I am Guilty Spark , I was created by @Alcatraz b312 using Python")
-@client.command()
-async def Bff(ctx):
-    await ctx.send("My Best friend is Botube")
+
 @client.command()
 async def creator(ctx):
     await ctx.send('<@669574365267886130> created me')
+
 @client.command()
 async def say(ctx,*,arg):
     await ctx.send(arg)
-@client.command()
-async def yo(ctx):
-    await ctx.send("yo fellas , wassup")
+
 @client.command()
 async def cya(ctx):
     await ctx.send("Bye!")
+
 def to_upper(argument):
     return argument.upper()
 
 @client.command()
 async def bold(ctx, *, content: to_upper):
     await ctx.send(content)
+
 @client.command()
 async def joined(ctx, *, member: discord.Member):
     await ctx.send('{0} joined on {0.joined_at}'.format(member))
