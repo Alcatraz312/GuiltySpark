@@ -35,6 +35,6 @@ async def joined(ctx, *, member: discord.Member):
 
 @client.command()
 async def servers(ctx):
-    await ctx.send("I am currently active in 2 servers")
+    await ctx.send("I am currently active in 3 servers")
 
 client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.xs8zT_3NyJ9C7Xy67hQPKzzNQfQ")
