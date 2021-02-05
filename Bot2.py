@@ -33,4 +33,8 @@ async def bold(ctx, *, content: to_upper):
 async def joined(ctx, *, member: discord.Member):
     await ctx.send('{0} joined on {0.joined_at}'.format(member))
 
+@client.command()
+async def servers(ctx):
+    await ctx.send("I am currently active in 2 servers")
+
 client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.xs8zT_3NyJ9C7Xy67hQPKzzNQfQ")
