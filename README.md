@@ -34,4 +34,4 @@ cd
 
 ### That's it!
 
-You've successfully contributed in the development of GuiltySpark. Noe you just have to create a pull request and we would merge the changes soon..
+You've successfully contributed in the development of GuiltySpark. Now you just have to create a pull request and we would merge the changes soon..
