@@ -58,3 +58,5 @@ async def memes(ctx, amount:int = 1):
         em.set_image(url = url)
 
         await ctx.send(embed = em)
+
+client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.xs8zT_3NyJ9C7Xy67hQPKzzNQfQ")
