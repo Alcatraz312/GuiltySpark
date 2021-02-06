@@ -45,7 +45,11 @@ async def servers(ctx):
  
 @client.command()
 async def memes(ctx, amount:int = 1):
+<<<<<<< HEAD
     subreddit = await reddit.subreddit(random.choice(("dankmemes", "memes")))
+=======
+    subreddit = await reddit.subreddit("stocking_paradise")
+>>>>>>> 6a460948360c831d2229af1145929d3e1d1be59a
     a = []
     top = subreddit.top(limit = amount)
     async for submission in top:
