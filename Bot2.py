@@ -45,7 +45,7 @@ async def servers(ctx):
  # Ek second dekh rha hu oku
 @client.command()
 async def memes(ctx, amount:int = 1):
-    subreddit = await reddit.subreddit("advancedbjj")
+    subreddit = await reddit.subreddit(random.choice(("dankmemes", "stocking_paradise", "memes")))
     a = []
     top = subreddit.top(limit = amount)
     async for submission in top:
