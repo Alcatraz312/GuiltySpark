@@ -45,7 +45,7 @@ async def servers(ctx):
  # Ek second dekh rha hu oku
 @client.command()
 async def memes(ctx, amount:int = 1):
-    subreddit = await reddit.subreddit("memes")
+    subreddit = await reddit.subreddit("advancedbjj")
     a = []
     top = subreddit.top(limit = amount)
     async for submission in top:
@@ -58,5 +58,3 @@ async def memes(ctx, amount:int = 1):
         em.set_image(url = url)
 
         await ctx.send(embed = em)
-
-client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.xs8zT_3NyJ9C7Xy67hQPKzzNQfQ")
