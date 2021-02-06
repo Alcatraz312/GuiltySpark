@@ -42,13 +42,13 @@ async def joined(ctx, *, member: discord.Member):
 @client.command()
 async def servers(ctx):
     await ctx.send("I am currently active in 3 servers")
-
+ # Ek second dekh rha hu oku
 @client.command()
-async def memes(ctx, amount:int = 5):
+async def memes(ctx, amount:int = 1):
     subreddit = await reddit.subreddit("memes")
     a = []
     top = subreddit.top(limit = amount)
-    for submission in top:
+    async for submission in top:
         a.append(submission)
         random_sub = random.choice(a)
         name = random_sub.title

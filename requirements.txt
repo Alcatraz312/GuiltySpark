@@ -1,6 +1,2 @@
 discord
-<<<<<<< HEAD
 asyncpraw
-=======
-asyncpraw
->>>>>>> aac81f351f36c646003568d95a6ec10c8094545f
