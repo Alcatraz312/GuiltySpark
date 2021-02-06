@@ -1,9 +1,9 @@
 import discord
 from discord.ext import commands
 import random
-import praw
+import asyncpraw
 
-reddit = praw.Reddit(client_id="a4N80AQ_USBGgQ",
+reddit = asyncpraw.Reddit(client_id="a4N80AQ_USBGgQ",
                      client_secret="PHsGECOOvLD4OLwJspSNl1XwKQTs3g",
                      user_agent="python script")
 
@@ -44,10 +44,10 @@ async def servers(ctx):
     await ctx.send("I am currently active in 3 servers")
 
 @client.command()
-async def memes(ctx):
-    subreddit = reddit.subreddit("memes")
+async def memes(ctx, amount:int = 5):
+    subreddit = await reddit.subreddit("memes")
     a = []
-    top = subreddit.top(limit = 50)
+    top = subreddit.top(limit = amount)
     for submission in top:
         a.append(submission)
         random_sub = random.choice(a)
