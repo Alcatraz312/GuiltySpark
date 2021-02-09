@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 import random
-import asyncpraw
 
 client = commands.Bot(command_prefix="g!")
 
@@ -21,9 +20,6 @@ async def creator(ctx):
 async def say(ctx,*,arg):
     await ctx.send(arg)
 
-@client.command()
-async def cya(ctx):
-    await ctx.send("Bye!")
 
 def to_upper(argument):
     return argument.upper()
