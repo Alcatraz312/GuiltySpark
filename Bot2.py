@@ -3,11 +3,8 @@ from discord.ext import commands
 import random
 import asyncpraw
 
-reddit = asyncpraw.Reddit(client_id="a4N80AQ_USBGgQ",
-                     client_secret="PHsGECOOvLD4OLwJspSNl1XwKQTs3g",
-                     user_agent="python script")
-
 client = commands.Bot(command_prefix="g!")
+
 @client.event
 async def on_ready():
     print("Your bot is ready")
@@ -44,23 +41,7 @@ async def servers(ctx):
     await ctx.send("I am currently active in 3 servers")
  
 @client.command()
-async def memes(ctx, amount:int = 1):
-<<<<<<< HEAD
-    subreddit = await reddit.subreddit(random.choice(("dankmemes", "memes")))
-=======
-    subreddit = await reddit.subreddit("stocking_paradise")
->>>>>>> 6a460948360c831d2229af1145929d3e1d1be59a
-    a = []
-    top = subreddit.top(limit = amount)
-    async for submission in top:
-        a.append(submission)
-        random_sub = random.choice(a)
-        name = random_sub.title
-        url = random_sub.url
-
-        em = discord.Embed(title = name)
-        em.set_image(url = url)
-
-        await ctx.send(embed = em)
+async def ping(ctx):
+    await ctx.send("pong!")
 
 client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.xs8zT_3NyJ9C7Xy67hQPKzzNQfQ")
