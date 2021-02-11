@@ -6,11 +6,12 @@ client = commands.Bot(command_prefix="g!")
 
 @client.event
 async def on_ready():
+    await client.change_presence(status = discord.Status.idle,activity = discord.Game("g!help"))
     print("Your bot is ready")
     
 @client.command()
 async def hello(ctx):
-    await ctx.send("Hey there! , I am Guilty Spark , I was created by @Alcatraz b312 using Python")
+    await ctx.send("Hey there! , I am Guilty Spark , I was created by Alcatraz b312 using Python")
 
 @client.command()
 async def creator(ctx):
