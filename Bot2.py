@@ -26,7 +26,7 @@ def to_upper(argument):
     return argument.upper()
 
 @client.command()
-async def bold(ctx, *, content: to_upper):
+async def upcase(ctx, *, content: to_upper):
     await ctx.send(content)
 
 @client.command()
