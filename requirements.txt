@@ -1,2 +1,3 @@
 discord
 asyncpraw
+pynacl
