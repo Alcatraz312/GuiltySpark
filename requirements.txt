@@ -1,3 +1,4 @@
 discord
 asyncpraw
 pynacl
+youtube_dl
