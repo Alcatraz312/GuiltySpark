@@ -1,8 +1,9 @@
 import discord
-from discord.ext import commands
+from discord.ext import commands , tasks
 from random import choice
 import youtube_dl
 from discord.voice_client import VoiceClient
+import asyncio
 client = commands.Bot(command_prefix="g!")
 
 youtube_dl.utils.bug_reports_message = lambda: ''
@@ -96,7 +97,7 @@ async def join(ctx):
         channel = ctx.message.author.voice.channel
 
     await channel.connect()
-
+queue = ["https://youtu.be/Wl959QnD3lM"]
 @client.command(name='queue', help='This command adds a song to the queue')
 async def queue_(ctx, url):
     global queue
