@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
-import random
+from random import choice
+import youtube_dl
 
 client = commands.Bot(command_prefix="g!")
 
@@ -39,6 +40,6 @@ async def servers(ctx):
  
 @client.command()
 async def ping(ctx):
-    await ctx.send("pong!")
+    await ctx.send(f'**Pong!** Latency: {round(client.latency * 1000)}ms ')
 
 client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.xs8zT_3NyJ9C7Xy67hQPKzzNQfQ")
