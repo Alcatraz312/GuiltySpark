@@ -4,6 +4,7 @@ from random import choice
 import youtube_dl
 from discord.voice_client import VoiceClient
 import asyncio
+from youtube_dl import YoutubeDL
 client = commands.Bot(command_prefix="g!")
 
 youtube_dl.utils.bug_reports_message = lambda: ''
@@ -97,7 +98,7 @@ async def join(ctx):
         channel = ctx.message.author.voice.channel
 
     await channel.connect()
-queue = ["https://youtu.be/Wl959QnD3lM"]
+queue = []
 @client.command(name='queue', help='This command adds a song to the queue')
 async def queue_(ctx, url):
     global queue
@@ -116,19 +117,7 @@ async def remove(ctx, number):
     except:
         await ctx.send('Your queue is either **empty** or the index is **out of range**')
         
-@client.command(name='play', help='This command plays songs')
-async def play(ctx):
-    global queue
 
-    server = ctx.message.guild
-    voice_channel = server.voice_client
-
-    async with ctx.typing():
-        player = await YTDLSource.from_url(queue[0], loop=client.loop)
-        voice_channel.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
-
-    await ctx.send('**Now playing:** {}'.format(player.title))
-    del(queue[0])
 
 @client.command(name='pause', help='This command pauses the song')
 async def pause(ctx):
@@ -159,7 +148,54 @@ async def stop(ctx):
     voice_channel = server.voice_client
 
     voice_channel.stop()
+ 
 
 
+
+@client.command()
+async def play(ctx, url=None):
+    print('hello world')
+    
+    if not url: 
+        await ctx.send('Enter a URL! (otherwise listen to this)')
+        url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+    
+    user=ctx.author
+    voice_channel=user.voice.channel
+    channel=None
+    # only play music if user is in a voice channel
+    if voice_channel:
+        # grab user's voice channel
+        channel=voice_channel.name
+        
+        # create StreamPlayer
+        
+        if not ctx.voice_client:
+      
+            vc = await voice_channel.connect()
+
+        
+        voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+        
+        if not voice.is_playing():
+            
+            YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist':'True'}
+            with YoutubeDL(YDL_OPTIONS) as ydl:
+                info = ydl.extract_info(url, download=False)
+                print(2)
+
+            URL = info['formats'][0]['url']
+            print(3)
+            voice.play(discord.FFmpegPCMAudio(URL))
+            print(voice.is_playing())
+            print("Strated playing")
+            # Sleep while audio is playing.
+            
+            
+        else:
+            await ctx.send("Already playing song")
+            return
+    else:
+        await ctx.send('User is not in a channel.')
 
 client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.xs8zT_3NyJ9C7Xy67hQPKzzNQfQ")
