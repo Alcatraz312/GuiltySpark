@@ -1,11 +1,18 @@
 import discord
 from discord.ext import commands , tasks
-from random import choice
+import random
 import youtube_dl
 from discord.voice_client import VoiceClient
 import asyncio
 from youtube_dl import YoutubeDL
+import praw
 client = commands.Bot(command_prefix="g!")
+
+reddit = praw.Reddit(client_id = "BuL6vCcSuCfHGg",
+                     client_secret = "lhdbXabYByoNVlsa-kD9iWGbVhAixQ",
+                     username = "Alcatraz-b312",
+                     password = "1234moyv",
+                     user_agent = "pythonpraw")
 
 youtube_dl.utils.bug_reports_message = lambda: ''
 
@@ -198,4 +205,26 @@ async def play(ctx, url=None):
     else:
         await ctx.send('User is not in a channel.')
 
+@client.command()
+async def meme(ctx):
+    subreddit = reddit.subreddit("memes")
+    all_subs = []
+    
+    top = subreddit.top(limit = 5)
+    
+    for submission in top:
+        all_subs.append(submission)
+        
+        random_sub = random.choice(all_subs)
+
+        name = random_sub.title
+        url = random_sub.url
+        
+        em = discord.Embed(title = name)
+        em.set_image(url = url)
+
+        await ctx.send(embed = em)
+
+
 client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.xs8zT_3NyJ9C7Xy67hQPKzzNQfQ")
+
