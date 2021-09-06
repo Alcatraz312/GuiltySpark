@@ -210,7 +210,7 @@ async def meme(ctx):
     subreddit = reddit.subreddit("memes")
     all_subs = []
     
-    top = subreddit.top(limit = 5)
+    top = subreddit.top(limit = 1)
     
     for submission in top:
         all_subs.append(submission)
