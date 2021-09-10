@@ -205,6 +205,7 @@ async def play(ctx, url=None):
     else:
         await ctx.send('User is not in a channel.')
 
+#meme command
 @client.command()
 async def meme(ctx):
     subreddit = reddit.subreddit("memes")
