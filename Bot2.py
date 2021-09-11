@@ -156,7 +156,7 @@ async def stop(ctx):
 
     voice_channel.stop()
  
-@client.command 
+@client.command()
 async def deez_what(ctx):
     await ctx.send("deez nuts!!")
 
