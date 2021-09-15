@@ -158,7 +158,7 @@ async def stop(ctx):
  
 @client.command()
 async def deez_what(ctx):
-    await ctx.send("deez nuts!!")
+    await ctx.send("deez nuts!!!")
 
 
 @client.command()
