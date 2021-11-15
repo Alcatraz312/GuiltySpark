@@ -227,6 +227,11 @@ async def meme(ctx):
         em.set_image(url = url)
 
         await ctx.send(embed = em)
+    
+#server
+@client.command
+async def server(ctx):
+    await ctx.send("https://discord.gg/CwZzF7TAcX")
 
 
 client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.xs8zT_3NyJ9C7Xy67hQPKzzNQfQ")
