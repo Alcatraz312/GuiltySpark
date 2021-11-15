@@ -229,7 +229,7 @@ async def meme(ctx):
         await ctx.send(embed = em)
     
 #server
-@client.command
+@client.command()
 async def server(ctx):
     await ctx.send("https://discord.gg/CwZzF7TAcX")
 
