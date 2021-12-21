@@ -89,8 +89,8 @@ async def joined(ctx, *, member: discord.Member):
 
 @client.command()
 async def servers(ctx):
-    await ctx.send("I am currently active in",f"{str(client.guilds)}", "servers")
- 
+    await ctx.send(f"{str(client.guilds)}")
+
 @client.command()
 async def ping(ctx):
     await ctx.send(f'**Pong!** Latency: {round(client.latency * 1000)}ms ')
