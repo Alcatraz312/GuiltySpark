@@ -71,7 +71,7 @@ async def hello(ctx):
 async def creator(ctx):
     await ctx.send('<@669574365267886130> created me')
 
-@client.command()
+@client.command(name = "say" , help = "This command makes the bot repeats the sentence")
 async def say(ctx,*,arg):
     await ctx.send(arg)
 
@@ -79,11 +79,11 @@ async def say(ctx,*,arg):
 def to_upper(argument):
     return argument.upper()
 
-@client.command()
+@client.command(name = "upcase" , help ="This command converts into uppercase")
 async def upcase(ctx, *, content: to_upper):
     await ctx.send(content)
 
-@client.command()
+@client.command(name = "joined" , help = "This command gives the date and time of join of a member")
 async def joined(ctx, *, member: discord.Member):
     await ctx.send('{0} joined on {0.joined_at}'.format(member))
 
@@ -91,7 +91,7 @@ async def joined(ctx, *, member: discord.Member):
 async def servers(ctx):
     await ctx.send("I'm in " + str(len(client.guilds)) + " servers!")
 
-@client.command()
+@client.command(name = "ping" , help = "Shows the latency")
 async def ping(ctx):
     await ctx.send(f'**Pong!** Latency: {round(client.latency * 1000)}ms ')
 
