@@ -89,7 +89,7 @@ async def joined(ctx, *, member: discord.Member):
 
 @client.command()
 async def servers(ctx):
-    await ctx.send("I am currently active in 3 servers")
+    await ctx.send("I am currently active in", {len(client.guilds)}, "servers")
  
 @client.command()
 async def ping(ctx):
@@ -227,6 +227,8 @@ async def meme(ctx):
         em.set_image(url = url)
 
         await ctx.send(embed = em)
+
+
     
 #server
 @client.command()
