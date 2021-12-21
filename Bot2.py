@@ -89,7 +89,7 @@ async def joined(ctx, *, member: discord.Member):
 
 @client.command()
 async def servers(ctx):
-    await ctx.send(f"{str(client.guilds)}")
+    await ctx.send("I'm in " + str(len(client.guilds)) + " servers!")
 
 @client.command()
 async def ping(ctx):
