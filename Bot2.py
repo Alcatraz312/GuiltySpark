@@ -256,7 +256,7 @@ async def on_message(message):
 
         if cursor.rowcount == 0:
             await client.db.execute("Update guilddata set exp = exp + 1 where guild_id = ? and user_id = ? " , (message.guild.id , message.author.id))
-            cur = await client.db.execute("Select exp from guilddata where guild_id = ? and user_id = ?", (message.guild.id , message.author,id))
+            cur = await client.db.execute("Select exp from guilddata where guild_id = ? and user_id = ?", (message.guild.id , message.author.id))
             data = await cur.fetchone()
             exp = data[0]
             lvl = math.sqrt(exp)/client.multiplier
@@ -293,7 +293,7 @@ async def stats(ctx , member: discord.member = None):
 
     lvl_percentage = ((exp - current_lvl_exp) / (next_lvl_exp - current_lvl_exp)) * 100
 
-    emb = discord.Embed(title = f"Status for {member.name}" , colour = discord.colour.red())
+    emb = discord.Embed(title = f"Status for {member.name}" , colour = discord.Colour.red())
     emb.add_field(name = "Level" , value = str(lvl))
     emb.add_field(name = "Exp" , value = f"{exp}/{next_lvl_exp}")
     emb.add_field(name = "Rank" , value = f"{rank}/{ctx.guild.member_count}")
@@ -312,7 +312,7 @@ async def stats(ctx , member: discord.member = None):
         index = 1
         entries_per_page = 10
 
-        emb = discord.Embed(title = f"Leaderboard page {current} " , description = "" , colour = discord.colour.red())
+        emb = discord.Embed(title = f"Leaderboard page {current} " , description = "" , colour = discord.Colour.red())
         msg = await ctx.send(emb =emb)
 
         for button in buttons:
