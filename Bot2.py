@@ -301,7 +301,7 @@ async def stats(ctx , member: discord.member = None):
 
     
     #leader board 
-    @client.command()
+    @commands.command()
     async def leaderboard(ctx):
         buttons = {}
         for i in range (1,6):
