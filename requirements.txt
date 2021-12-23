@@ -2,3 +2,4 @@ discord
 pynacl
 youtube_dl
 praw
+aiosqlite
