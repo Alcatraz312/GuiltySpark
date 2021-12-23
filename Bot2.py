@@ -1,5 +1,6 @@
 import discord
 from discord import channel
+from discord.embeds import EmbedProxy
 from discord.ext import commands , tasks
 import random
 import youtube_dl
@@ -293,57 +294,59 @@ async def stats(ctx , member: discord.member = None):
 
     lvl_percentage = ((exp - current_lvl_exp) / (next_lvl_exp - current_lvl_exp)) * 100
 
-    emb = discord.Embed(title = f"Status for {member.name}" , colour = discord.Colour.red())
-    emb.add_field(name = "Level" , value = str(lvl))
-    emb.add_field(name = "Exp" , value = f"{exp}/{next_lvl_exp}")
-    emb.add_field(name = "Rank" , value = f"{rank}/{ctx.guild.member_count}")
-    emb.add_field(name  = "Level Progress" , value = f"{round(lvl_percentage , 2)}%")
+    embed = discord.Embed(title = f"Status for {member.name}" , colour = discord.Colour.red())
+    embed.add_field(name = "Level" , value = str(lvl))
+    embed.add_field(name = "Exp" , value = f"{exp}/{next_lvl_exp}")
+    embed.add_field(name = "Rank" , value = f"{rank}/{ctx.guild.member_count}")
+    embed.add_field(name  = "Level Progress" , value = f"{round(lvl_percentage , 2)}%")
+
+    await ctx.send(embed = embed)
 
     
-    #leader board 
-    @commands.command()
-    async def leaderboard(ctx):
-        buttons = {}
-        for i in range (1,6):
-            buttons[f"{i}\N{COMBINING ENCLOSING KEYCAP}"] = i
+#leaderboard 
+@client.command()
+async def leaderboard(ctx):
+    buttons = {}
+    for i in range (1,6):
+        buttons[f"{i}\N{COMBINING ENCLOSING KEYCAP}"] = i
+    
+    previous_page = 0
+    current = 1
+    index = 1
+    entries_per_page = 10
+
+    embed = discord.Embed(title = f"Leaderboard page {current} " , description = "" , colour = discord.Colour.red())
+    msg = await ctx.send(embed = embed )
+
+    for button in buttons:
+        await msg.add_reaction(button)
+
+    while True:
+        if current != previous_page:
+            embed.title = f"Leaderboard page {current}"
+            embed.description = ""
+
+            async with client.db.execute("select user_id , exp from guilddata where guild_id = ? order by exp desc limit ? offset ?" , (ctx.guild.id , entries_per_page , entries_per_page*(current - 1) , )) as cursor:
+                index = entries_per_page * (current - 1)
+
+                async for entry in cursor:
+                    index+=1
+                    member_id , exp = entry
+                    member = ctx.guild.get_member(member_id)
+                    embed.description += f"{index}) {member.mention} : {exp}\n"
+
+                await msg.edit(embed = embed)
         
-        previous_page = 0
-        current = 1
-        index = 1
-        entries_per_page = 10
+        try:
+            reaction , user = await client.wait_for("reaction add" , check = lambda reaction , user: user == ctx.author and reaction.emoji in buttons , timeout = 60.0)
 
-        emb = discord.Embed(title = f"Leaderboard page {current} " , description = "" , colour = discord.Colour.red())
-        msg = await ctx.send(emb =emb)
-
-        for button in buttons:
-            await msg.add_reaction(button)
-
-        while True:
-            if current != previous_page:
-                emb.title = f"Leaderboard page {current}"
-                emb.description = ""
-
-                async with client.db.execute("select user_id , exp from guilddata where guild_id = ? order by exp desc limit ? offset ?" , (ctx.guild.id , entries_per_page , entries_per_page*(current - 1) , )) as cursor:
-                    index = entries_per_page * (current - 1)
-
-                    async for entry in cursor:
-                        index+=1
-                        member_id , exp = entry
-                        member = ctx.guild.get_member(member_id)
-                        emb.description += f"{index}) {member.mention} : {exp}\n"
-
-                    await msg.edit(emb = emb)
-            
-            try:
-                reaction , user = await client.wait_for("reaction add" , check = lambda reaction , user: user == ctx.author and reaction.emoji in buttons , timeout = 60.0)
-
-            except asyncio.TimeoutError:
-                return await msg.clear_reactions()
-            
-            else:
-                previous_page = current
-                await msg.remove_reaction(reaction.emoji , ctx.author)
-                current = buttons[reaction.emoji]
+        except asyncio.TimeoutError:
+            return await msg.clear_reactions()
+        
+        else:
+            previous_page = current
+            await msg.remove_reaction(reaction.emoji , ctx.author)
+            current = buttons[reaction.emoji]
 
 
 client.loop.create_task(initialise())
