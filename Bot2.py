@@ -355,7 +355,7 @@ async def members(ctx):
 
 
 client.loop.create_task(initialise())
-client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.xs8zT_3NyJ9C7Xy67hQPKzzNQfQ")
+client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.5lNeUqiMpRKax0dx1fud-HYe5hA")
 
 asyncio.run(client.db.close())
 
