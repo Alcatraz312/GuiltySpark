@@ -348,6 +348,11 @@ async def leaderboard(ctx):
             await msg.remove_reaction(reaction.emoji , ctx.author)
             current = buttons[reaction.emoji]
 
+#total members in the server
+@client.command()
+async def members(ctx):
+    await ctx.send("There are currently "+ str(ctx.guild.member_count) +" members in this server.")
+
 
 client.loop.create_task(initialise())
 client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.xs8zT_3NyJ9C7Xy67hQPKzzNQfQ")
