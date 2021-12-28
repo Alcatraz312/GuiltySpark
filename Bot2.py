@@ -12,8 +12,100 @@ import os
 import math
 import aiosqlite
 
+
+
 client = commands.Bot(command_prefix="g!")
 
+#custom help command
+client.remove_command("help")
+
+@client.group(inwoke_without_command = True)
+async def help(ctx):
+    em = discord.Embed(title = "help" , description = "use  g!help <command> for extended information on a command." , color = ctx.author.color)
+    em.add_field(name = "Fun" , value = "say , ping , upcase ")
+    em.add_field(name = "Server" , value = "creator , joined , server , servers , members")
+    em.add_field(name = "Level" , value = "stats , leaderboard")
+    em.add_field(name = "Music" , value = "play , stop , queue , view , pause , leave , remove")
+
+    await ctx.send(embed = em)
+
+@help.command()
+async def say(ctx):
+    em = discord.Embed(title = "say" , description = "Repeats the sentence wrote by the user" , color = ctx.author.color)
+    em.add_field(name= "**Syntax**" , value = "g!say <text>")
+    await ctx.send(embed = em)
+@help.command()
+async def ping(ctx):
+    em = discord.Embed(title = "ping" , description = "Shows the ping" , color = ctx.author.color)
+    await ctx.send(embed = em)
+@help.command()
+async def upcase(ctx):
+    em = discord.Embed(title = "upcase" , description = "Changes the case of the sentence to bold." , color = ctx.author.color)
+    em.add_field(name = "**Syntax**" , value = "g!upcase <text>")
+    await ctx.send(embed = em)
+@help.command()
+async def creator(ctx):
+    em = discord.Embed(title = "creator" , description = "Creator of this bot" , color = ctx.author.color)
+    await ctx.send(embed = em)
+@help.command()
+async def joined(ctx):
+    em = discord.Embed(title = "joined" , description = "Shows the time and date of join of a member in this server" , color = ctx.author.color)
+    em.add_field(name = "**Syntax**" , value = "g!joined <name of the member or member mention>")
+    await ctx.send(embed = em)
+@help.command()
+async def server(ctx):
+    em = discord.Embed(title = "server" , description = "server of origin" , color = ctx.author.color)
+    await ctx.send(embed = em)
+@help.command()
+async def servers(ctx):
+    em = discord.Embed(title = "servers" , description = "Total number of servers using this bot" , color = ctx.author.color)
+    await ctx.send(embed = em)
+@help.command()
+async def members(ctx):
+    em = discord.Embed(title = "members" , description = "gives the total number of members in this server" , color = ctx.author.color)
+    await ctx.send(embed=em)
+@help.command()
+async def stats(ctx):
+    em  = discord.Embed(title = "stats" , description = "Shows the stats of the user in this server" , color = ctx.author.color)
+    await ctx.send(embed=em)
+@help.command()
+async def leaderboard(ctx):
+    em = discord.Embed(title = "leaderboard" , description = "shows the level leaderboard of members in this server" , color = ctx.author.color)
+    await ctx.send(embed = em)
+@help.command()
+async def play(ctx):
+    em = discord.Embed(title = "play" , description = "Plays the music requested by the user in the voice channel" , color = ctx.author.color)
+    em.add_field(name = "**Syntax**" , value = "g!play <link of the song>")
+    await ctx.send(embed = em)
+@help.command()
+async def stop(ctx):
+    em = discord.Embed(title = "stop" , description = "Stops the song currently being played in the voice channel" , color = ctx.author.color)
+    await ctx.send(embed = em)
+@help.command()
+async def queue(ctx):
+    em = discord.Embed(title = "queue" , description = "Add the song in the queue as requested by the user" , color = ctx.author.color)
+    em.add_field(name = "**Syntax**" , value = "g!queue <link of the song>")
+    await ctx.send(embed = em)
+@help.command()
+async def view(ctx):
+    em = discord.Embed(title = "view", description = "Shows the current music queue" , color = ctx.author.color)
+    await ctx.send(embed = em)
+@help.command()
+async def pause(ctx):
+    em = discord.Embed(title = "pause" , description = "Pauses the music currently playing in the voice channel" , color = ctx.author.color)
+    await ctx.send(embed = em)
+@help.command()
+async def remove(ctx):
+    em = discord.Embed(title = "remove" , description = "Removes the song from the queue" , color = ctx.author.color)
+    await ctx.send(embed = em)
+@help.command()
+async def leave(ctx):
+    em = discord.Embed(title = "leave" , description = "Makes the bot leave the voice channel" , color = ctx.author.color)
+    await ctx.send(embed = em)
+
+
+
+#reddit connection
 reddit = praw.Reddit(client_id = "BuL6vCcSuCfHGg",
                      client_secret = "lhdbXabYByoNVlsa-kD9iWGbVhAixQ",
                      username = "Alcatraz-b312",
@@ -36,6 +128,7 @@ ytdl_format_options = {
     'source_address': '0.0.0.0' # bind to ipv4 since ipv6 addresses cause issues sometimes
 }
 
+#ffmpeg connection
 ffmpeg_options = {
     'options': '-vn -reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5'
 }
@@ -101,6 +194,7 @@ async def servers(ctx):
 async def ping(ctx):
     await ctx.send(f'**Pong!** Latency: {round(client.latency * 1000)}ms ')
 
+#music commands
 @client.command(name='join', help='This command makes the bot join the voice channel')
 async def join(ctx):
     if not ctx.message.author.voice:
@@ -162,9 +256,7 @@ async def stop(ctx):
 
     voice_channel.stop()
  
-@client.command()
-async def deez_what(ctx):
-    await ctx.send("deez nuts!!!")
+
 
 
 @client.command()
@@ -212,6 +304,10 @@ async def play(ctx, url=None):
             return
     else:
         await ctx.send('User is not in a channel.')
+
+@client.command()
+async def deez_what(ctx):
+    await ctx.send("deez nuts!!!")
 
 #meme command
 @client.command()
