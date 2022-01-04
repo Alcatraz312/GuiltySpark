@@ -103,8 +103,6 @@ async def leave(ctx):
     em = discord.Embed(title = "leave" , description = "Makes the bot leave the voice channel" , color = ctx.author.color)
     await ctx.send(embed = em)
 
-
-
 #reddit connection
 reddit = praw.Reddit(client_id = "BuL6vCcSuCfHGg",
                      client_secret = "lhdbXabYByoNVlsa-kD9iWGbVhAixQ",
@@ -173,7 +171,6 @@ async def creator(ctx):
 @client.command(name = "say" , help = "This command makes the bot repeats the sentence")
 async def say(ctx,*,arg):
     await ctx.send(arg)
-
 
 def to_upper(argument):
     return argument.upper()
@@ -449,9 +446,20 @@ async def leaderboard(ctx):
 async def members(ctx):
     await ctx.send("There are currently "+ str(ctx.guild.member_count) +" members in this server.")
 
+#kick and ban
+
+@client.command()
+async def kick(ctx, member : discord.Member,*, reason = None):       #we put "*" here in order to able to make spaces between the words of reason
+    await member.kick(reason = reason)
+
+@client.command()
+async def ban(ctx, member : discord.Member,* , reason = None):
+    await member.ban(reason = reason)
+
+
 
 client.loop.create_task(initialise())
-client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.5lNeUqiMpRKax0dx1fud-HYe5hA")
+client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.7mKS0-vgSu0PkjljQjXX7LAJiy8")
 
 asyncio.run(client.db.close())
 
