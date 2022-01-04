@@ -26,6 +26,7 @@ async def help(ctx):
     em.add_field(name = "Server" , value = "creator , joined , server , servers , members")
     em.add_field(name = "Level" , value = "stats , leaderboard")
     em.add_field(name = "Music" , value = "play , stop , queue , view , pause , leave , remove")
+    em.add_field(name = "Moderation" , value = "kick , ban")
 
     await ctx.send(embed = em)
 
@@ -101,6 +102,16 @@ async def remove(ctx):
 @help.command()
 async def leave(ctx):
     em = discord.Embed(title = "leave" , description = "Makes the bot leave the voice channel" , color = ctx.author.color)
+    await ctx.send(embed = em)
+@help.command()
+async def kick(ctx):
+    em = discord.Embed(title = "kick" , description = "Kicks the mentioned user" , color = ctx.author.color)
+    em.add_field(name = "**Syntax**" , value = "g!kick <mention user> <reason>")
+    await ctx.send(embed= em)
+@help.command()
+async def ban(ctx):
+    em = discord.Embed(title = "ban" , description = "Bans the mentioned user" , color = ctx.author.color)
+    em.add_field(name = "**Syntax**" , value = "g!ban <mention user> <reason>")
     await ctx.send(embed = em)
 
 #reddit connection
