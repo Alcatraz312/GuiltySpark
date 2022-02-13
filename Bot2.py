@@ -458,7 +458,7 @@ async def members(ctx):
     await ctx.send("There are currently "+ str(ctx.guild.member_count) +" members in this server.")
 
 #kick and ban
-
+'''
 @client.command()
 async def kick(ctx, member : discord.Member,*, reason = None):       #we put "*" here in order to able to make spaces between the words of reason
     await member.kick(reason = reason)
@@ -466,7 +466,7 @@ async def kick(ctx, member : discord.Member,*, reason = None):       #we put "*"
 @client.command()
 async def ban(ctx, member : discord.Member,* , reason = None):
     await member.ban(reason = reason)
-
+'''
 
 
 client.loop.create_task(initialise())
