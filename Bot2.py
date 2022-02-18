@@ -40,9 +40,9 @@ async def ping(ctx):
     em = discord.Embed(title = "ping" , description = "Shows the ping" , color = ctx.author.color)
     await ctx.send(embed = em)
 @help.command()
-async def upcase(ctx):
-    em = discord.Embed(title = "upcase" , description = "Changes the case of the sentence to bold." , color = ctx.author.color)
-    em.add_field(name = "**Syntax**" , value = "g!upcase <text>")
+async def bold(ctx):
+    em = discord.Embed(title = "bold" , description = "Changes the case of the sentence to bold." , color = ctx.author.color)
+    em.add_field(name = "**Syntax**" , value = "g!bold <text>")
     await ctx.send(embed = em)
 @help.command()
 async def creator(ctx):
@@ -186,7 +186,7 @@ async def say(ctx,*,arg):
 def to_upper(argument):
     return argument.upper()
 
-@client.command(name = "upcase" , help ="This command converts into uppercase")
+@client.command(name = "bold" , help ="This command converts into uppercase")
 async def upcase(ctx, *, content: to_upper):
     await ctx.send(content)
 
