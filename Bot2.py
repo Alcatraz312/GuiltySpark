@@ -11,7 +11,9 @@ import praw
 import os
 import math
 import aiosqlite
+from dotenv import dotenv_values
 
+config = dotenv_values(".env")
 
 
 client = commands.Bot(command_prefix="g!")
@@ -471,7 +473,7 @@ async def ban(ctx, member : discord.Member,* , reason = None):
 
 
 client.loop.create_task(initialise())
-client.run("Nzk4MDU3NjE4OTI4OTU5NDg4.X_vfEw.7mKS0-vgSu0PkjljQjXX7LAJiy8")
+client.run(config.DISCORD_TOKEN)
 
 asyncio.run(client.db.close())
 
