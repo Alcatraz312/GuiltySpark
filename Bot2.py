@@ -473,7 +473,7 @@ async def ban(ctx, member : discord.Member,* , reason = None):
 
 
 client.loop.create_task(initialise())
-client.run(config.DISCORD_TOKEN)
+client.run(config["DISCORD_TOKEN"])
 
-asyncio.run(client.db.close())
+# asyncio.run(client.db.close())
 
