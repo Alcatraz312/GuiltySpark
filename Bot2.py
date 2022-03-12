@@ -24,7 +24,7 @@ client.remove_command("help")
 @client.group(inwoke_without_command = True)
 async def help(ctx):
     em = discord.Embed(title = "help" , description = "use  g!help <command> for extended information on a command." , color = ctx.author.color)
-    em.add_field(name = "Fun" , value = "say , ping , upcase ")
+    em.add_field(name = "Fun" , value = "say , ping , upcase , choose")
     em.add_field(name = "Server" , value = "creator , joined , server , servers , members")
     em.add_field(name = "Level" , value = "stats , leaderboard")
     em.add_field(name = "Music" , value = "play , stop , queue , view , pause , leave , remove")
@@ -115,6 +115,12 @@ async def ban(ctx):
     em = discord.Embed(title = "ban" , description = "Bans the mentioned user" , color = ctx.author.color)
     em.add_field(name = "**Syntax**" , value = "g!ban <mention user> <reason>")
     await ctx.send(embed = em)
+@help.command()
+async def choose(ctx):
+    em = discord.Embed(title = "choose" , description = "Chooses between multiple choices" , color = ctx.author.color)
+    em.add_field(name = "**Syntax**" , value = "g!choose <choice1> <choice2> .... <choice nth>" )
+    await ctx.send(embed = em)
+
 
 #reddit connection
 reddit = praw.Reddit(client_id = "BuL6vCcSuCfHGg",
@@ -458,6 +464,11 @@ async def leaderboard(ctx):
 @client.command()
 async def members(ctx):
     await ctx.send("There are currently "+ str(ctx.guild.member_count) +" members in this server.")
+
+
+@client.command()
+async def choose(ctx , *choices : str):
+    await ctx.send(random.choice(choices))
 
 '''
 #kick and ban
