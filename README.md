@@ -1,5 +1,8 @@
 # GuiltySpark
 
+<img src = "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/98af6926164787.563508e845fb4.jpg" height = 200 width = 200 align = "middle" />
+
+
 The only open-source discord bot you've dreamt of. Request or suggest to get instant additon of features. Get it for your server [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 # Help contribute
@@ -35,4 +38,4 @@ cd
 ### That's it!
 
 You've successfully contributed in the development of GuiltySpark. Now you just have to create a pull request and we would merge the changes soon..
-<img src = "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/98af6926164787.563508e845fb4.jpg" height = 200 width = 200 align = "middle" />
+
