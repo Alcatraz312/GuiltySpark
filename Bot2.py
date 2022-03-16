@@ -25,7 +25,7 @@ client.remove_command("help")
 async def help(ctx):
     em = discord.Embed(title = "help" , description = "use  g!help <command> for extended information on a command." , color = ctx.author.color)
     em.add_field(name = "Fun" , value = "say , ping , upcase , choose")
-    em.add_field(name = "Server" , value = "creator , joined , server , servers , members")
+    em.add_field(name = "Server" , value = "creator , joined , server , servers , members , github")
     em.add_field(name = "Level" , value = "stats , leaderboard")
     em.add_field(name = "Music" , value = "play , stop , queue , view , pause , leave , remove")
     em.add_field(name = "Moderation" , value = "kick , ban")
@@ -120,7 +120,10 @@ async def choose(ctx):
     em = discord.Embed(title = "choose" , description = "Chooses between multiple choices" , color = ctx.author.color)
     em.add_field(name = "**Syntax**" , value = "g!choose <choice1> <choice2> .... <choice nth>" )
     await ctx.send(embed = em)
-
+@help.command()
+async def github(ctx):
+    em = discord.Embed(title = "github" , description = "Sends the github repository link of this bot" , color = ctx.author.color)
+    await ctx.send(embed = em)
 
 #reddit connection
 reddit = praw.Reddit(client_id = "BuL6vCcSuCfHGg",
@@ -272,9 +275,7 @@ async def stop(ctx):
 
     voice_channel.stop()
  
-
-
-
+ 
 @client.command()
 async def play(ctx, url=None):
     print('hello world')
@@ -352,6 +353,10 @@ async def meme(ctx):
 @client.command()
 async def server(ctx):
     await ctx.send("https://discord.gg/CwZzF7TAcX")
+
+@client.command()
+async def github(ctx):
+    await ctx.send("https://github.com/Alcatraz312/GuiltySpark")
 
 #level up system
 
