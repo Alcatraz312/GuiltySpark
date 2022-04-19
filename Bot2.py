@@ -358,6 +358,7 @@ async def server(ctx):
 async def github(ctx):
     await ctx.send("https://github.com/Alcatraz312/GuiltySpark")
 
+'''
 #level up system
 
 async def initialise():
@@ -464,7 +465,7 @@ async def leaderboard(ctx):
             previous_page = current
             await msg.remove_reaction(reaction.emoji , ctx.author)
             current = buttons[reaction.emoji]
-
+'''
 #total members in the server
 @client.command()
 async def members(ctx):
@@ -487,8 +488,9 @@ async def ban(ctx, member : discord.Member,* , reason = None):
     await member.ban(reason = reason)
 '''
 
-
+'''
 client.loop.create_task(initialise())
+'''
 client.run(config["DISCORD_TOKEN"] if "DISCORD_TOKEN" in config else os.environ['DISCORD_TOKEN'])
 
 # asyncio.run(client.db.close())
