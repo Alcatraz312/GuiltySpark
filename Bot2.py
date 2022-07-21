@@ -12,6 +12,7 @@ import os
 import math
 import aiosqlite
 from dotenv import dotenv_values
+from io import BytesIO
 
 config = dotenv_values(".env")
 
@@ -368,6 +369,11 @@ async def members(ctx):
 @client.command()
 async def choose(ctx , *choices : str):
     await ctx.send(random.choice(choices))
+
+myfile = discord.File('mogus.txt')     #set file 
+@client.command()
+async def mogus(ctx):
+    await ctx.send(file = myfile)
 
 '''
 #kick and ban
