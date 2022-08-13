@@ -25,7 +25,7 @@ client.remove_command("help")
 @client.group(inwoke_without_command = True)
 async def help(ctx):
     em = discord.Embed(title = "help" , description = "use  g!help <command> for extended information on a command." , color = ctx.author.color)
-    em.add_field(name = "Fun" , value = "say , ping , upcase , choose")
+    em.add_field(name = "Fun" , value = "say , ping , upcase , choose , mogus")
     em.add_field(name = "Server" , value = "creator , joined , server , servers , members , github")
     em.add_field(name = "Level" , value = "stats , leaderboard")
     em.add_field(name = "Music" , value = "play , stop , queue , view , pause , leave , remove")
@@ -125,7 +125,10 @@ async def choose(ctx):
 async def github(ctx):
     em = discord.Embed(title = "github" , description = "Sends the github repository link of this bot" , color = ctx.author.color)
     await ctx.send(embed = em)
-
+@help.command()
+async def mogus(ctx):
+    em = discord.Embed(title = "mogus", description = "Sends a mogus", color = ctx.author.color)
+    await ctx.send(embed = em)
 #reddit connection
 reddit = praw.Reddit(client_id = "BuL6vCcSuCfHGg",
                      client_secret = "lhdbXabYByoNVlsa-kD9iWGbVhAixQ",
