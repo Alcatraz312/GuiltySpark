@@ -385,7 +385,7 @@ myfile = discord.File('mogus.txt')     #set file
 async def mogus(ctx):
     await ctx.send(file = myfile)
 
-@client.command()
+@client.command()     # made using aiohttp library
 async def doggo(ctx):
     async with aiohttp.ClientSession() as session:
         req = await session.get("https://some-random-api.ml/img/dog")  #making API request
