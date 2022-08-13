@@ -1,3 +1,4 @@
+from pydoc import describe
 import discord
 from discord import channel
 from discord.embeds import EmbedProxy
@@ -13,6 +14,7 @@ import math
 import aiosqlite
 from dotenv import dotenv_values
 from io import BytesIO
+import aiohttp
 
 config = dotenv_values(".env")
 
@@ -25,7 +27,7 @@ client.remove_command("help")
 @client.group(inwoke_without_command = True)
 async def help(ctx):
     em = discord.Embed(title = "help" , description = "use  g!help <command> for extended information on a command." , color = ctx.author.color)
-    em.add_field(name = "Fun" , value = "say , ping , upcase , choose , mogus")
+    em.add_field(name = "Fun" , value = "say , ping , upcase , choose , mogus , doggo")
     em.add_field(name = "Server" , value = "creator , joined , server , servers , members , github")
     em.add_field(name = "Level" , value = "stats , leaderboard")
     em.add_field(name = "Music" , value = "play , stop , queue , view , pause , leave , remove")
@@ -129,6 +131,11 @@ async def github(ctx):
 async def mogus(ctx):
     em = discord.Embed(title = "mogus", description = "Sends a mogus", color = ctx.author.color)
     await ctx.send(embed = em)
+@help.command()
+async def doggo(ctx):
+    em = discord.Embed(title = "doggo", description = "Sends a random doggo", color = ctx.author.color)
+    await ctx.send(embed = em)
+
 #reddit connection
 reddit = praw.Reddit(client_id = "BuL6vCcSuCfHGg",
                      client_secret = "lhdbXabYByoNVlsa-kD9iWGbVhAixQ",
@@ -377,6 +384,21 @@ myfile = discord.File('mogus.txt')     #set file
 @client.command()
 async def mogus(ctx):
     await ctx.send(file = myfile)
+
+@client.command()
+async def doggo(ctx):
+    async with aiohttp.ClientSession() as session:
+        req = await session.get("https://some-random-api.ml/img/dog")  #making API request
+        dogj = await req.json()  # Convert it to a JSON dictionary
+
+        req2 = await session.get("https://some-random-api.ml/facts/dog")
+        factj = await req2.json()
+    
+    embed = discord.Embed(title = "Doggo!!", color = ctx.author.color)  #creating embed
+    embed.set_image(url = dogj["link"])  # Set the embed image to the value of the "link" key
+    embed.set_footer(text = factj["fact"])
+    await ctx.send(embed = embed)
+
 
 '''
 #kick and ban
