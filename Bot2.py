@@ -14,7 +14,7 @@ import math
 import aiosqlite
 from dotenv import dotenv_values
 from io import BytesIO
-import aiohttp
+
 
 config = dotenv_values(".env")
 
@@ -385,20 +385,20 @@ myfile = discord.File('mogus.txt')     #set file
 async def mogus(ctx):
     await ctx.send(file = myfile)
 
-@client.command()     # made using aiohttp library
-async def doggo(ctx):
-    async with aiohttp.ClientSession() as session:
-        req = await session.get("https://some-random-api.ml/img/dog")  #making API request
-        dogj = await req.json()  # Convert it to a JSON dictionary
 
-        req2 = await session.get("https://some-random-api.ml/facts/dog")
-        factj = await req2.json()
+@client.command()
+async def tb(ctx, *arg):
+    b = [x for x in arg]
+    c = []
+
+    for i in range(4):
+        z = random.choice(b)
+        b.remove(z)
+        c.append(z)
     
-    embed = discord.Embed(title = "Doggo!!", color = ctx.author.color)  #creating embed
-    embed.set_image(url = dogj["link"])  # Set the embed image to the value of the "link" key
-    embed.set_footer(text = factj["fact"])
-    await ctx.send(embed = embed)
-
+    
+    await ctx.send(c)
+    await ctx.send(b)
 
 '''
 #kick and ban

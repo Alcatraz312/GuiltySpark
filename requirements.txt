@@ -4,4 +4,3 @@ youtube_dl
 praw
 aiosqlite
 python-dotenv
-aiohttp
