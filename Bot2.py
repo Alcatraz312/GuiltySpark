@@ -387,7 +387,7 @@ async def mogus(ctx):
 
 
 @client.command()
-async def tb(ctx, *arg):
+async def squads(ctx, *arg):
     b = [x for x in arg]
     c = []
 
@@ -397,8 +397,8 @@ async def tb(ctx, *arg):
         c.append(z)
     
     
-    await ctx.send(c)
-    await ctx.send(b)
+    await ctx.send("Team A :",c)
+    await ctx.send("Team B :",b)
 
 '''
 #kick and ban
