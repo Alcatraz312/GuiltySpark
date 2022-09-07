@@ -373,7 +373,7 @@ async def github(ctx):
 #total members in the server
 @client.command()
 async def members(ctx):
-    await ctx.send("There are currently "+ str(ctx.guild.member_count) +" members in this server.")
+    await ctx.send("There are currently " + str(ctx.guild.member_count) + " members in this server.")
 
 
 @client.command()
@@ -387,7 +387,7 @@ async def mogus(ctx):
 
 
 @client.command()
-async def squads(ctx, *arg):
+async def squads(ctx,*arg):
     b = [x for x in arg]
     c = []
 
@@ -397,8 +397,8 @@ async def squads(ctx, *arg):
         c.append(z)
     
     
-    await ctx.send("Team A :",c)
-    await ctx.send("Team B :",b)
+    await ctx.send("Team A : " + str(c))
+    await ctx.send("Team B : " + str(b))
 
 '''
 #kick and ban
