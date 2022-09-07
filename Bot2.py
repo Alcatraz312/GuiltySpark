@@ -387,8 +387,8 @@ async def mogus(ctx):
 
 
 @client.command()
-async def squads(ctx,*arg):
-    b = [x for x in arg]
+async def squads(ctx, arg : str):
+    b = arg.split(",")
     c = []
 
     for i in range(4):
