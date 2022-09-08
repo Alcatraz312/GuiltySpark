@@ -1,5 +1,4 @@
 from pydoc import describe
-from turtle import color, title
 import discord
 from discord import channel
 from discord.embeds import EmbedProxy
