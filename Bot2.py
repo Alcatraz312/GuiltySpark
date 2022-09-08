@@ -133,7 +133,7 @@ async def mogus(ctx):
     await ctx.send(embed = em)
 @help.command()
 async def squads(ctx):
-    em = discord.Embed(title = "squads", description = " generates 2 random teams of 4 players", color = ctx.author.color)
+    em = discord.Embed(title = "squads", description = " Generates 2 random teams of 4 players", color = ctx.author.color)
     em.add_field(name = "**Syntax**", value = "g!squads <player 1>,<player 2>,<player 3>.....<player 8>")
     await ctx.send(embed = em)
 #reddit connection
