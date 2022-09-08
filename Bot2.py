@@ -1,4 +1,5 @@
 from pydoc import describe
+from turtle import color, title
 import discord
 from discord import channel
 from discord.embeds import EmbedProxy
@@ -396,9 +397,12 @@ async def squads(ctx, arg : str):
         b.remove(z)
         c.append(z)
     
-    
-    await ctx.send("Team A : " + str(c))
-    await ctx.send("Team B : " + str(b))
+    embed = discord.Embed(title = "Random generated teams",color = ctx.author.color)
+    embed.set_author(name = ctx.author.display_name, icon_url= ctx.author.avatar_url)     #display user's name and user pfp
+    embed.set_thumbnail(url= "https://thumbs.dreamstime.com/b/vs-versus-logo-design-template-duel-icon-vector-illustration-versus-logo-design-template-duel-icon-vs-symbol-vector-182360815.jpg")
+    embed.add_field(name= "Team A:", value = str(c), inline= False)         #inline = False won't allow the second field to be next to the first field
+    embed.add_field(name = "Team B:",value = str(b), inline= False)
+    await ctx.send(embed = embed)
 
 '''
 #kick and ban
