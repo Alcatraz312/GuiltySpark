@@ -27,7 +27,7 @@ client.remove_command("help")
 @client.group(inwoke_without_command = True)
 async def help(ctx):
     em = discord.Embed(title = "help" , description = "use  g!help <command> for extended information on a command." , color = ctx.author.color)
-    em.add_field(name = "Fun" , value = "say , ping , upcase , choose , mogus , doggo")
+    em.add_field(name = "Fun" , value = "say , ping , upcase , choose , mogus , squads")
     em.add_field(name = "Server" , value = "creator , joined , server , servers , members , github")
     em.add_field(name = "Level" , value = "stats , leaderboard")
     em.add_field(name = "Music" , value = "play , stop , queue , view , pause , leave , remove")
@@ -130,10 +130,6 @@ async def github(ctx):
 @help.command()
 async def mogus(ctx):
     em = discord.Embed(title = "mogus", description = "Sends a mogus", color = ctx.author.color)
-    await ctx.send(embed = em)
-@help.command()
-async def doggo(ctx):
-    em = discord.Embed(title = "doggo", description = "Sends a random doggo", color = ctx.author.color)
     await ctx.send(embed = em)
 @help.command()
 async def squads(ctx):
