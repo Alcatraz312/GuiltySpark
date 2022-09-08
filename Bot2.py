@@ -135,7 +135,11 @@ async def mogus(ctx):
 async def doggo(ctx):
     em = discord.Embed(title = "doggo", description = "Sends a random doggo", color = ctx.author.color)
     await ctx.send(embed = em)
-
+@help.command()
+async def squads(ctx):
+    em = discord.Embed(title = "squads", description = " generates 2 random teams of 4 players", color = ctx.author.color)
+    em.add_field(name = "**Syntax**", value = "g!squads <player 1>,<player 2>,<player 3>.....<player 8>")
+    await ctx.send(embed = em)
 #reddit connection
 reddit = praw.Reddit(client_id = "BuL6vCcSuCfHGg",
                      client_secret = "lhdbXabYByoNVlsa-kD9iWGbVhAixQ",
