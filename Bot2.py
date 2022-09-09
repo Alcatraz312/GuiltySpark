@@ -1,4 +1,6 @@
+from dis import disco
 from pydoc import describe
+from turtle import title
 import discord
 from discord import channel
 from discord.embeds import EmbedProxy
@@ -407,6 +409,31 @@ async def squads(ctx, arg : str):
         embed.add_field(name= "Team A:", value = str(c), inline= False)         #inline = False won't allow the second field to be next to the first field
         embed.add_field(name = "Team B:",value = str(b), inline= False)
         await ctx.send(embed = embed)
+
+
+@client.command()
+async def duos(ctx,arg : str):
+    b = arg.split(",")
+    t = len(b)
+    if (t%2 != 0):
+        await ctx.send("Odd or invalid number of arguments were given, please give even number of arguments")
+    else:
+        n = int(len(b)/2)
+        c = []
+        
+        for i in range(n):
+            s = str(i+1)
+            c.append([])
+            for j in range(2):
+                x = random.choice(b)
+                b.remove(x)
+                c[i].append(x)
+            embed = discord.Embed(color = ctx.author.color)
+            embed.add_field(name = "Team "+ s +" :", value = c[i], inline= False)
+            await ctx.send(embed = embed)
+
+
+
 
 '''
 #kick and ban
