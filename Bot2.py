@@ -140,7 +140,7 @@ async def squads(ctx):
 @help.command()
 async def duos(ctx):
     em = discord.Embed(title = "duos", description = "Generates random teams of 2 players", color = ctx.author.color)
-    em.add_field(name = "**Syntax**", value = "g!duos <player 1>,<player 2>,<player 3>......<player n>      NOTE : Number of players should be even", color = ctx.author.color)
+    em.add_field(name = "**Syntax**", value = "g!duos <player 1>,<player 2>,<player 3>......<player n>      NOTE : Number of players should be even",)
     await ctx.send(embed = em)
 #reddit connection
 reddit = praw.Reddit(client_id = "BuL6vCcSuCfHGg",
