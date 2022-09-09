@@ -1,6 +1,5 @@
 from dis import disco
 from pydoc import describe
-from turtle import title
 import discord
 from discord import channel
 from discord.embeds import EmbedProxy
