@@ -29,7 +29,7 @@ client.remove_command("help")
 @client.group(inwoke_without_command = True)
 async def help(ctx):
     em = discord.Embed(title = "help" , description = "use  g!help <command> for extended information on a command." , color = ctx.author.color)
-    em.add_field(name = "Fun" , value = "say , ping , upcase , choose , mogus , squads")
+    em.add_field(name = "Fun" , value = "say , ping , upcase , choose , mogus , squads , duos")
     em.add_field(name = "Server" , value = "creator , joined , server , servers , members , github")
     em.add_field(name = "Level" , value = "stats , leaderboard")
     em.add_field(name = "Music" , value = "play , stop , queue , view , pause , leave , remove")
@@ -137,6 +137,11 @@ async def mogus(ctx):
 async def squads(ctx):
     em = discord.Embed(title = "squads", description = " Generates 2 random teams of 4 players", color = ctx.author.color)
     em.add_field(name = "**Syntax**", value = "g!squads <player 1>,<player 2>,<player 3>.....<player 8>")
+    await ctx.send(embed = em)
+@help.command()
+async def duos(ctx):
+    em = discord.Embed(title = "duos", description = "Generates random teams of 2 players", color = ctx.author.color)
+    em.add_field(name = "**Syntax**", value = "g!duos <player 1>,<player 2>,<player 3>......<player n>      NOTE : Number of players should be even", color = ctx.author.color)
     await ctx.send(embed = em)
 #reddit connection
 reddit = praw.Reddit(client_id = "BuL6vCcSuCfHGg",
