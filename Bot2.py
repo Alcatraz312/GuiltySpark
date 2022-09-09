@@ -434,6 +434,7 @@ async def duos(ctx,arg : str):
                 c[i].append(x)
             embed = discord.Embed(color = ctx.author.color)
             embed.add_field(name = "Team "+ s +" :", value = c[i], inline= False)
+            embed.set_thumbnail(url="https://pngtree.com/freepng/vs-or-versus-logo-design-template-duel-icon_6009619.html")
             await ctx.send(embed = embed)
 
 
