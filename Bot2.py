@@ -142,6 +142,11 @@ async def duos(ctx):
     em = discord.Embed(title = "duos", description = "Generates random teams of 2 players", color = ctx.author.color)
     em.add_field(name = "**Syntax**", value = "g!duos <player 1>,<player 2>,<player 3>......<player n>      NOTE : Number of players should be even",)
     await ctx.send(embed = em)
+@help.command()
+async def trios(ctx):
+    em = discord.Embed(title = "trios", description = "Generates random teams of 3 players", color = ctx.author.color)
+    em.add_field(name = "**Syntax**", value = "g!trios <player 1>,<player 2>,<player 3>......<player n>      NOTE : Total number of players should be a multiple of 3")
+    await ctx.send(embed = em)
 #reddit connection
 reddit = praw.Reddit(client_id = "BuL6vCcSuCfHGg",
                      client_secret = "lhdbXabYByoNVlsa-kD9iWGbVhAixQ",
@@ -437,8 +442,28 @@ async def duos(ctx,arg : str):
             embed.set_thumbnail(url="https://thumbs.dreamstime.com/b/vs-versus-logo-design-template-duel-icon-vector-illustration-versus-logo-design-template-duel-icon-vs-symbol-vector-182360815.jpg")
             await ctx.send(embed = embed)
 
+@client.command()
+async def trios(ctx, arg : str):
+    b = arg.split(",")
+    
+    if (len(b)%3 != 0):
+        await ctx.send("Invalid number of arguments were given, please give arguments in the multiple of 3")
+    else:
+        a = []
+        n = int(len(b)/3)
 
-
+        for i in range(n):
+            a.append([])
+            s = str(i+1)
+            for j in range(3):
+                x = random.choice(b)
+                a[i].append(x)
+                b.remove(x)
+            
+            embed = discord.Embed(color = ctx.author.color)
+            embed.add_field(name = "Team" + s + " :",value = a[i], inline = False)
+            embed.set_thumbnail(url ="https://thumbs.dreamstime.com/b/vs-versus-logo-design-template-duel-icon-vector-illustration-versus-logo-design-template-duel-icon-vs-symbol-vector-182360815.jpg")
+            await ctx.send(embed = embed)
 
 '''
 #kick and ban
