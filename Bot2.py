@@ -19,8 +19,11 @@ from io import BytesIO
 
 config = dotenv_values(".env")
 
+intents = discord.Intents.default()
+intents.message_content = True
 
-client = commands.Bot(command_prefix="g!")
+
+client = commands.Bot(command_prefix="g!", intents=intents)
 
 #custom help command
 client.remove_command("help")
@@ -413,7 +416,7 @@ async def squads(ctx, arg : str):
             c.append(z)
     
         embed = discord.Embed(title = "Random generated teams",color = ctx.author.color)
-        embed.set_author(name = ctx.author.display_name, icon_url= ctx.author.avatar_url)     #display user's name and user pfp
+        embed.set_author(name = ctx.author.display_name, icon_url= ctx.author.avatar.url)     #display user's name and user pfp
         embed.set_thumbnail(url= "https://thumbs.dreamstime.com/b/vs-versus-logo-design-template-duel-icon-vector-illustration-versus-logo-design-template-duel-icon-vs-symbol-vector-182360815.jpg")
         embed.add_field(name= "Team A:", value = str(c), inline= False)         #inline = False won't allow the second field to be next to the first field
         embed.add_field(name = "Team B:",value = str(b), inline= False)
