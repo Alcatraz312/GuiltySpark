@@ -16,6 +16,7 @@ import aiosqlite
 from dotenv import dotenv_values
 from io import BytesIO
 
+'''hello wat is up'''
 
 config = dotenv_values(".env")
 
