@@ -15,7 +15,8 @@ import math
 import aiosqlite
 from dotenv import dotenv_values
 from io import BytesIO
-
+from discord import app_commands
+import aiohttp
 '''hello wat is up'''
 
 config = dotenv_values(".env")
@@ -150,6 +151,11 @@ async def duos(ctx):
 async def trios(ctx):
     em = discord.Embed(title = "trios", description = "Generates random teams of 3 players", color = ctx.author.color)
     em.add_field(name = "**Syntax**", value = "g!trios <player 1>,<player 2>,<player 3>......<player n>      NOTE : Total number of players should be a multiple of 3")
+    await ctx.send(embed = em)
+
+@help.command()
+async def flip(ctx):
+    em = discord.Embed(title = "flip",description = "Flips an unbiased coin", color = ctx.author.color)
     await ctx.send(embed = em)
 #reddit connection
 reddit = praw.Reddit(client_id = "BuL6vCcSuCfHGg",
@@ -468,6 +474,13 @@ async def trios(ctx, arg : str):
             embed.add_field(name = "Team" + s + " :",value = a[i], inline = False)
             embed.set_thumbnail(url ="https://thumbs.dreamstime.com/b/vs-versus-logo-design-template-duel-icon-vector-illustration-versus-logo-design-template-duel-icon-vs-symbol-vector-182360815.jpg")
             await ctx.send(embed = embed)
+
+@client.command()
+async def flip(ctx):
+    toss = random.choice(["Tails","Heads"])
+    await ctx.send(f"You flip a coin and it lands on {toss} !!!")
+
+
 
 '''
 #kick and ban
