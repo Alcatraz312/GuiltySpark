@@ -1,2 +1,4 @@
 # Secret file
 .env
+AWS_key.ppk
+Alca_key.pem
