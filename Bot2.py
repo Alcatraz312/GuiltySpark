@@ -33,7 +33,7 @@ client.remove_command("help")
 @client.group(inwoke_without_command = True)
 async def help(ctx):
     em = discord.Embed(title = "help" , description = "use  g!help <command> for extended information on a command." , color = ctx.author.color)
-    em.add_field(name = "Fun" , value = "say , ping , upcase , choose , mogus , squads , duos")
+    em.add_field(name = "Fun" , value = "say , ping , upcase , choose , mogus , squads , duos , flip")
     em.add_field(name = "Server" , value = "creator , joined , server , servers , members , github")
     em.add_field(name = "Level" , value = "stats , leaderboard")
     em.add_field(name = "Music" , value = "play , stop , queue , view , pause , leave , remove")
